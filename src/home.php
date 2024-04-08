@@ -1,14 +1,8 @@
 <?php
-$servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "reviewerer";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Couldn't connect to database");
-}
+  require_once('db.php');
+  $conn = connectDb();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

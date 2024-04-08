@@ -1,10 +1,8 @@
 # Php
 - [x] strona główna
-- [ ] jaka struktura aby renderować od nowa
-    tylko <main> zamiast wszystkiego
+- [x] rejestracja
 - [ ] logowanie
-- [ ] rejestracja
-- [ ] wystawianie oceny
+- [/] wystawianie oceny
 - [ ] wyszukanie produktu po nazwie
 
 # Css
