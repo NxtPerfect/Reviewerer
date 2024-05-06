@@ -22,6 +22,13 @@
     $_username = $_POST["username"];
     $_email = $_POST["email"];
     $_password = $_POST["password"];
+    $query = "SELECT email FROM users WHERE email LIKE `$email`;";
+    $res = mysqli_query($conn, $query);
+    if (count(mysqli_fetch_all($res, MYSQLI_ASSOC)) > 0) { // Jeśli tak, pokaż wiadomość
+      mysqli_free_result($res);
+      return "Użytkownik istnieje.";
+    }
+    mysqli_free_result($res);
     $query = "INSERT INTO users (id, username, email, password, total_reviews) VALUES ('$_uuid', '$_username', '$_email', '$_password', 0);";
     $res = mysqli_query(connectDb(), $query);
     header('Location: home.php', true, 301);
@@ -42,14 +49,14 @@
       <form action="register.php" method="POST">
         <label for="email">Email</label>
         <input type="email" name="email" placeholder="email@domain.io" minlength="4" maxlength="64" required></input>
-        <label for="username">Username</label>
+        <label for="username">Nazwa użytkownika</label>
         <input type="text" name="username" placeholder="username" minlength="2" maxlength="64" required></input>
-        <label for="password">Password</label>
+        <label for="password">Hasło</label>
         <input type="password" name="password" placeholder="********" minlength="8" maxlength="64" required></input>
-        <label for="confirm_password">Confirm Password</label>
+        <label for="confirm_password">Powtórz hasło</label>
         <input type="password" name="confirm_password" placeholder="********" minlength="8" maxlength="64" required></input>
-        <button type="submit">Register</button>
-        <button type="button" href="login.php">Login</button>
+        <button type="submit">Zarejestruj</button>
+        <button type="button" href="login.php">Zaloguj</button>
       </form>
     <?php echo "<span class='error'>" . register() . "</span>";?>
     </main>

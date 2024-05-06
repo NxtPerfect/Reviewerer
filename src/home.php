@@ -15,7 +15,7 @@
     <?php include 'nav.php';?>
     <main>
       <h1>Reviewer</h1>
-      <h2>Recent reviews</h2>
+      <h2>Najnowsze recenzje</h2>
       <div class="recent_reviews">
         <?php
           // Pokaż ostatnie 20 recenzji

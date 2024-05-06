@@ -9,6 +9,7 @@ function connectDb() {
   if ($conn->connect_error) {
     die("Couldn't connect to database");
   }
+  session_start();
   return $conn;
 }
 

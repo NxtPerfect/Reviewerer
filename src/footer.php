@@ -1,4 +1,4 @@
 <footer>
-    <a href="/src/login.php">Login</a>
-    <a href="/src/register.php">Register</a>
+    <a href="/src/login.php">Zaloguj</a>
+    <a href="/src/register.php">Zarejestruj</a>
 </footer> 
