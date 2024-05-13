@@ -11,21 +11,21 @@
 
 <nav>
   <div class="logo">Logo</div>
-  <form class="search" action="search.php">
-    <input type="text" name="search_name" class="search_bar" maxlength="64" placeholder="Szukaj"></input>
-    <button type="submit">Szukaj</button>
+  <form class="bg-black rounded-full pl-4" action="search.php">
+    <input class="bg-transparent" type="text" name="search_name" maxlength="64" placeholder="Wyszukaj nazwy produktu"></input>
+    <button class="text-white bg-gray-600 hover:bg-gray-700 hover:cursor-pointer active:bg-gray-500 transition rounded-r-full px-2 pr-4 py-1 h-full" type="submit">Szukaj</button>
   </form>
-  <div class="links">
+  <div class="flex flex-row gap-4">
   <?php
     if ($_SESSION["email"]) {
-      echo "<a href='/src/home.php'>Strona główna</a>";
+      echo "<a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href='/src/home.php'>Strona główna</a>";
       echo "<span>" . $_SESSION["email"] . "</span>";
-      echo "<a href='/src/nav.php?logout=1'>Wyloguj</a></div></nav>";
+      echo "<a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href='/src/nav.php?logout=1'>Wyloguj</a></div></nav>";
       return;
     }
   ?>
-    <a href="/src/home.php">Strona główna</a>
-    <a href="/src/login.php">Zaloguj</a>
-    <a href="/src/register.php">Zarejestruj</a>
+    <a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href="/src/home.php">Strona główna</a>
+    <a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href="/src/login.php">Zaloguj</a>
+    <a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href="/src/register.php">Zarejestruj</a>
   </div>
 </nav>

@@ -30,7 +30,6 @@ if(isset($_GET["search_name"])) {
       <?php 
           while($row = $result->fetch_assoc()) {
             echo "<div class='review'><h3>" . $row["name"]. "</h3><p>Total Reviews: " . $row["total_reviews"] . "</p><p>Total Score: " . $row["total_score"] . "<a href='review.php?id=" . $row["id"] . "'>Review</a></div>";
-            echo "<div class='review'><h3>" . $row["name"]. "</h3><p>Total Reviews: " . $row["total_reviews"] . "</p><p>Total Score: " . $row["total_score"] . "<a href='review.php?id=" . $row["id"] . "'>Review</a></div>";
           }
           mysqli_free_result($result);
 ?>

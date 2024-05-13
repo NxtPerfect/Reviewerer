@@ -1,9 +1,10 @@
 # Php
 - [x] strona główna
 - [x] rejestracja
-- [ ] logowanie
-- [/] wystawianie oceny
-- [ ] wyszukanie produktu po nazwie
+- [x] logowanie
+- [x] wystawianie oceny
+- [x] wyszukanie produktu po nazwie
+- [ ] Liczba ocen i wynik powinien być liczony w php a nie bazie danych
 
 # Css
 - [/] strona główna
