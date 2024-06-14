@@ -12,7 +12,6 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
     $query = "SELECT email, password, role FROM users WHERE email LIKE '$email';";
-    echo $query;
     $res = mysqli_query(connectDb(), $query);
     $res = mysqli_fetch_all($res, MYSQLI_ASSOC);
     if (count($res) == 0) {
@@ -21,9 +20,8 @@
     }
     if ($res[0]["password"] == $password) {
       $_SESSION["email"] = $_POST["email"];
-      $_SESSION["role"] = $query["role"];
+      $_SESSION["role"] = $res[0]["role"];
       header('Location: home.php', true, 301);
-      echo "Ustawiono sesje";
       return;
     }
     return "Niepoprawne dane logowania.";

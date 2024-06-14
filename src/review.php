@@ -7,7 +7,7 @@
     $sql = "SELECT id FROM users WHERE email = '$_em';";
     $res = mysqli_query($conn, $sql);
     $res = mysqli_fetch_all($res, MYSQLI_ASSOC);
-    $_uid = $res[0];
+    $_uid = $res[0]["id"];
     $_pid = $_GET["id"];
     $_id = uuidv4();
     $_title = $_POST["title"];

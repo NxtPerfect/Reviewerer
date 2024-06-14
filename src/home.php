@@ -1,6 +1,11 @@
 <?php
   require_once('db.php');
   $conn = connectDb();
+
+  if(isset($_POST["remove"]) && $_POST["remove"] == true && $_SESSION["role"] == "admin") {
+    $sql = "DELETE FROM reviews WHERE id = '" . $_POST["id"] . "';";
+    $result = $conn->query($sql);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -22,19 +27,21 @@
           $sql = "SELECT *, (SELECT name FROM products p WHERE p.id = product_id) product_name, (SELECT id FROM products p WHERE p.id = product_id) product_id FROM reviews ORDER BY date LIMIT 20;";
           $result = $conn->query($sql);
           while($row = $result->fetch_assoc()) {
-            echo "<div class='flex flex-col justify-items-center justify-center items-center bg-gray-300 shadow-md rounded-md p-4'>";
+            echo "<div class='flex flex-col justify-items-center justify-center items-center bg-gray-300 shadow-md rounded-md p-4 min-w-48'>";
             echo "<h3 class='text-xl font-semibold'>";
             echo "<a href='review.php?id=" . $row["product_id"] . "'>" . $row["product_name"]. "</a>";
             echo "</h3>";
             echo "<p class='text-lg'>". $row["title"] . "</p>";
             echo "<p class='font-thin text-sm'>". $row["date"] ."</p>";
-            echo "<p class='leading-8'>" . $row["description"] . "</p>";
-            echo "<p class='font-mono'>" . $row["score"] . "</p>";
+            echo "<p class='leading-8 max-w-[40ch] mt-4 text-justify'>" . $row["description"] . "</p>";
+            echo "<p class='font-mono mt-4'>" . $row["score"] . "/100</p>";
             // Administrator powinien móc usuwać recenzje
             // form musi przesłać id jako post
             // na górze pliku sql query żeby usunąć
-            if ($_SESSION["role"] != "admin") {
-              echo "<form action='home.php'>";
+            if ($_SESSION["role"] == "admin") {
+              echo "<form method='POST' action='home.php'>";
+              echo "<input type='hidden' name='id' value='" . $row["id"] . "'></input>";
+              echo "<input type='hidden' name='remove' value='true'></input>";
               echo "<button class='bg-red-500 px-4 py-2 rounded-md shadow-md text-white hover:bg-red-400 active:bg-red-600' type='submit'>Usuń</button>";
               echo "</form>";
             }
