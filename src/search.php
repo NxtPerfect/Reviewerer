@@ -20,7 +20,7 @@ if(isset($_GET["search_name"])) {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0">
-    <title></title>
+    <title>Wyszukiwanie</title>
     <link href="../css/style.css" rel="stylesheet">
   </head>
   <body>
@@ -29,7 +29,12 @@ if(isset($_GET["search_name"])) {
       <h3>Results</h3>
       <?php 
           while($row = $result->fetch_assoc()) {
-            echo "<div class='review'><h3>" . $row["name"]. "</h3><p>Total Reviews: " . $row["total_reviews"] . "</p><p>Total Score: " . $row["total_score"] . "<a href='review.php?id=" . $row["id"] . "'>Review</a></div>";
+            $sql = "SELECT COUNT(*) as total_reviews, SUM(score)/COUNT(*) as total_score FROM reviews WHERE product_id = '" . $row["id"] . "';";
+            $count = $conn->query($sql);
+            $count = $count->fetch_assoc();
+            echo "<div class='review'>";
+            echo "<h3>" . $row["name"]. "</h3>";
+            echo "<p>Total Reviews: " . $count["total_reviews"] . "</p><p>Total Score: " . number_format($count["total_score"], 2) . "<a href='review.php?id=" . $row["id"] . "'>Review</a></div>";
           }
           mysqli_free_result($result);
 ?>

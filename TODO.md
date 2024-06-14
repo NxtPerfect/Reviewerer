@@ -4,13 +4,13 @@
 - [x] logowanie
 - [x] wystawianie oceny
 - [x] wyszukanie produktu po nazwie
-- [ ] Liczba ocen i wynik powinien być liczony w php a nie bazie danych
+- [x] Liczba ocen i wynik powinien być liczony w php a nie bazie danych
+- [/] Administrator może usuwać recenzje
+    - musi przesłać id jako post
+
 
 # Css
-- [/] strona główna
-    - [ ] gradient góra i dół z przezroczystością
-    gdy scrollujesz
-    recenzje na środku, jakieś 50% szerokości
+- [x] strona główna
 - [ ] logowanie
 - [ ] rejestracja
-- [ ] wystawianie oceny
+- [x] wystawianie oceny

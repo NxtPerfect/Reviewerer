@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Reviewer</title>
     <link href="../css/style.css" rel="stylesheet">
   </head>
   <body>
@@ -22,7 +22,23 @@
           $sql = "SELECT *, (SELECT name FROM products p WHERE p.id = product_id) product_name, (SELECT id FROM products p WHERE p.id = product_id) product_id FROM reviews ORDER BY date LIMIT 20;";
           $result = $conn->query($sql);
           while($row = $result->fetch_assoc()) {
-            echo "<div class='flex flex-col justify-items-center justify-center items-center bg-gray-300 shadow-md rounded-md p-4'><h3 class='text-xl font-semibold'><a href='review.php?id=" . $row["product_id"] . "'>" . $row["product_name"]. "</a></h3><p class='text-lg'>". $row["title"] . "</p><p class='font-thin text-sm'>". $row["date"] ."</p><p class='leading-8'>" . $row["description"] . "</p><p class='font-mono'>" . $row["score"] . "</p></div>";
+            echo "<div class='flex flex-col justify-items-center justify-center items-center bg-gray-300 shadow-md rounded-md p-4'>";
+            echo "<h3 class='text-xl font-semibold'>";
+            echo "<a href='review.php?id=" . $row["product_id"] . "'>" . $row["product_name"]. "</a>";
+            echo "</h3>";
+            echo "<p class='text-lg'>". $row["title"] . "</p>";
+            echo "<p class='font-thin text-sm'>". $row["date"] ."</p>";
+            echo "<p class='leading-8'>" . $row["description"] . "</p>";
+            echo "<p class='font-mono'>" . $row["score"] . "</p>";
+            // Administrator powinien móc usuwać recenzje
+            // form musi przesłać id jako post
+            // na górze pliku sql query żeby usunąć
+            if ($_SESSION["role"] != "admin") {
+              echo "<form action='home.php'>";
+              echo "<button class='bg-red-500 px-4 py-2 rounded-md shadow-md text-white hover:bg-red-400 active:bg-red-600' type='submit'>Usuń</button>";
+              echo "</form>";
+            }
+            echo "</div>";
           }
           mysqli_free_result($result);
         ?>
