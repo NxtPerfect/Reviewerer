@@ -9,8 +9,8 @@
   }
 ?>
 
-<nav>
-  <div class="logo">Logo</div>
+<nav class="bg-neutral-200 w-full py-4">
+  <div class="logo">Reviewerer</div>
   <form class="bg-black rounded-full pl-4" action="search.php">
     <input class="bg-transparent text-white" type="text" name="search_name" maxlength="64" placeholder="Wyszukaj nazwy produktu"></input>
     <button class="text-white bg-gray-600 hover:bg-gray-700 hover:cursor-pointer active:bg-gray-500 transition rounded-r-full px-2 pr-4 py-1 h-full" type="submit">Szukaj</button>

@@ -29,7 +29,7 @@
   </head>
   <body>
   <?php include 'nav.php';?> 
-    <main>
+    <main class="flex flex-col justify-center justify-items-center items-center content-center">
       <?php
         $id = $_GET['id'];
         $sql = "SELECT * FROM products p WHERE p.id = '$id';";
@@ -38,7 +38,7 @@
         $sql = "SELECT COUNT(*) as total_reviews, SUM(score)/COUNT(*) as total_score FROM reviews WHERE product_id = '" . $row["id"] . "';";
         $count = $conn->query($sql);
         $count = $count->fetch_assoc();
-        echo "<div class='flex flex-col border-2 border-black rounded-md p-4'>";
+        echo "<div class='flex flex-col border-2 border-black rounded-md mt-4 p-4'>";
         echo "<h3><a href='review.php?id=" . $row["id"] . "'>" . $row["name"]. "</a></h3>";
         echo $count["total_reviews"] . "/" . number_format($count['total_score'], 2) . "</div>";
 
@@ -54,6 +54,12 @@
           echo "</div>";
         }
         echo "</div>";
+      ?>
+      <?php
+        if(!isset($_SESSION["email"])) {
+          echo "<p>Zaloguj się aby wystawić ocenę</p>";
+          exit();
+        }
       ?>
       <form class="flex flex-col justify-items-center items-center border-2 border-black shadow-md rounded-md p-4" method="POST">
         <label class="text-lg font-medium" for='title'>Tytuł</label>

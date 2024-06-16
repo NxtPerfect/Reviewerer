@@ -7,13 +7,12 @@
 - [x] Liczba ocen i wynik powinien być liczony w php a nie bazie danych
 - [x] Administrator może usuwać recenzje
     - musi przesłać id jako post
-- [/] Dodawanie nowej recenzji jest popsute
-    - foreign key constraing failed
-- [ ] Hasła powinny być szyfrowane
+- [x] Dodawanie nowej recenzji jest popsute
+- [x] Hasła powinny być szyfrowane
 
 
 # Css
 - [x] strona główna
-- [ ] logowanie
-- [ ] rejestracja
+- [x] logowanie
+- [x] rejestracja
 - [x] wystawianie oceny
