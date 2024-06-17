@@ -1,11 +1,13 @@
 <?php
   if (isset($_GET["logout"])) {
-    session_unset();
+    session_start();
+    $_SESSION["email"] = '';
+    $_SESSION["role"] = '';
     unset($_SESSION["email"]);
     unset($_SESSION["role"]);
+    session_unset();
     session_destroy();
-    header('Location: home.php');
-    exit();
+    echo $_SESSION["email"] . " " . $_SESSION["role"];
   }
 ?>
 
@@ -17,10 +19,10 @@
   </form>
   <div class="flex flex-row gap-4">
   <?php
-    if ($_SESSION["email"]) {
+    if (isset($_SESSION["email"])) {
       echo "<a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href='/src/home.php'>Strona główna</a>";
       echo "<span>" . $_SESSION["email"] . "</span>";
-      echo "<a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href='/src/nav.php?logout=1'>Wyloguj</a></div></nav>";
+      echo "<a class='text-sky-500 hover:text-sky-600 hover:cursor-pointer active:text-sky-400 transition underline' href='/src/home.php?logout=1'>Wyloguj</a></div></nav>";
       return;
     }
   ?>

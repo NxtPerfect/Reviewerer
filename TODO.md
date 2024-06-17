@@ -9,6 +9,7 @@
     - musi przesłać id jako post
 - [x] Dodawanie nowej recenzji jest popsute
 - [x] Hasła powinny być szyfrowane
+- [ ] Wylogowanie nie działa
 
 
 # Css
