@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 17, 2024 at 06:39 PM
+-- Generation Time: Jun 19, 2024 at 09:57 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -64,7 +64,12 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`user_id`, `product_id`, `id`, `date`, `title`, `description`, `score`) VALUES
-('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '3', '6ccfede4-471d-4188-99a2-60d194a085e6', '2024-06-16', 'Polecam', 'fajnie', 33);
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '0', '3635bfdc-a772-4f72-98f3-82f8aa7cf572', '2024-06-19', 'Czyściutkie!', 'Polecam mydło, najlepsze na rynku, kiedyś miałem takie szare ale to jest dużo lepsze!', 80),
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '3', '6ccfede4-471d-4188-99a2-60d194a085e6', '2024-06-16', 'Polecam', 'fajnie', 33),
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '4', 'a46566e7-e869-47ee-8e83-aa38f58e64b4', '2024-06-19', 'super robot', 'sam gotuje, sprząta i myje, w kuchni nie ma już co robić tylko jeść, jeść i jeść!!!', 100),
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '1', 'beedeccd-b878-4fa1-a0a8-471972975d5f', '2024-06-19', 'a mi się podoba', 'dali dobrą cenę i wszystko się zgadza, mieszkanie jak tralala', 100),
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '2', 'c6e7edc1-56a3-4066-9906-f5052c8c0e4c', '2024-06-19', 'Baaardzo wartościowe miejsce', 'dobre ceny 👍', 100),
+('6a3ac85c-e5ba-4dd8-b18f-1780bd250f56', '1', 'fae7bfb3-11c1-4ddb-b11f-922c4f2b960c', '2024-06-19', 'scam', 'oszukali mnie na mieszkanie, wszystko opłacone a nie wydali kluczy i kontakt się urwał, unikać!!!', 0);
 
 -- --------------------------------------------------------
 
