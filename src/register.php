@@ -3,33 +3,34 @@
   $conn = connectDb();
 
   function register() {
-    if (!isset($_POST["email"])) {
+    if (!isset($_POST["email"])) { // Jesli nie podany email
       return;
     }
-    if (!isset($_POST["username"])) {
+    if (!isset($_POST["username"])) { // Jeśli nie podana nazwa użytkownika
       return "Username field is empty.";
     }
-    if (!isset($_POST["password"])) {
+    if (!isset($_POST["password"])) { // jeśli nie podane hasło
       return "Password field is empty.";
     }
-    if (!isset($_POST["confirm_password"])) {
+    if (!isset($_POST["confirm_password"])) { // jeśli nie podane potwierdzenie hasła
       return "Confirm password field is empty.";
     }
-    if ($_POST["password"] != $_POST["confirm_password"]) {
+    if ($_POST["password"] != $_POST["confirm_password"]) { // jeśli hasło i potwierdzenie hasła się nie zgadzają
       return "Passwords don't match";
     }
     $_uuid = uuidv4();
     $_username = $_POST["username"];
     $_email = $_POST["email"];
-    $_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $_password = password_hash($_POST["password"], PASSWORD_DEFAULT); // zaszyfruj hasło
     $query = "SELECT * FROM users WHERE email = '$_email';";
     echo $query;
     $res = mysqli_query(connectDb(), $query);
-    if (count(mysqli_fetch_all($res, MYSQLI_ASSOC)) > 0) { // Jeśli tak, pokaż wiadomość
+    if (count(mysqli_fetch_all($res, MYSQLI_ASSOC)) > 0) { // Jeśli użytkownik o takim mailu istnieje, pokaż błąd
       mysqli_free_result($res);
       return "Użytkownik istnieje.";
     }
     mysqli_free_result($res);
+    // Dodaj użytkownika do bazy danych i przenieś na stronę główną
     $query = "INSERT INTO users (id, username, email, password, role) VALUES ('$_uuid', '$_username', '$_email', '$_password', 'user');";
     $res = mysqli_query(connectDb(), $query);
     header('Location: home.php', true, 301);

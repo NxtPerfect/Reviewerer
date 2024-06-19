@@ -3,21 +3,23 @@
   $conn = connectDb();
 
   function login() {
-    if (!isset($_POST["email"])) {
+    if (!isset($_POST["email"])) { // jeśli nie podany email
       return;
     }
-    if (!isset($_POST["password"])) {
+    if (!isset($_POST["password"])) { // jeśli nie podane hasło
       return;
     }
     $email = $_POST["email"];
     $password = $_POST["password"];
+    // Sprawdź czy użytkownik o podanym emailu istnieje 
     $query = "SELECT email, password, role FROM users WHERE email LIKE '$email';";
     $res = mysqli_query(connectDb(), $query);
     $res = mysqli_fetch_all($res, MYSQLI_ASSOC);
-    if (count($res) == 0) {
+    if (count($res) == 0) { // Jeśli nie pokaż błąd
       mysqli_free_result($res);
       return "Niepoprawne dane logowania.";
     }
+    // Jeśli tak, sprawdź czy hasło zgadzaja się z podanym w formularzu
     if (password_verify($password, $res[0]["password"])) {
       $_SESSION["email"] = $_POST["email"];
       $_SESSION["role"] = $res[0]["role"];

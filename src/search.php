@@ -1,8 +1,8 @@
 <?php
   require_once('db.php');
-  $conn = connectDb();
+  $conn = connectDb(); // Połącz z bazą danych
 
-  if(isset($_GET["search_name"])) {
+  if(isset($_GET["search_name"])) { // Jeśli wpisana nazwa, wyszukaj podobnych
     $name = $_GET["search_name"];
     $sql = "SELECT * FROM products WHERE name LIKE '%" . $name . "%';";
     $result = $conn->query($sql);
@@ -22,7 +22,7 @@
     <main class="flex flex-col justify-center justify-items-center items-center content-center">
       <h3>Results</h3>
       <?php 
-          while($row = $result->fetch_assoc()) {
+          while($row = $result->fetch_assoc()) { // Zwróć każdy obiekt którego nazwa posiada frazę
             $sql = "SELECT COUNT(*) as total_reviews, SUM(score)/COUNT(*) as total_score FROM reviews WHERE product_id = '" . $row["id"] . "';";
             $count = $conn->query($sql);
             $count = $count->fetch_assoc();

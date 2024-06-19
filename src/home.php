@@ -1,7 +1,8 @@
 <?php
-  require_once('db.php');
+  require_once('db.php'); // Połącz z bazą danych
   $conn = connectDb();
 
+  // Jeśli administrator chce usunąc post, i ma ustawioną rolę administratora
   if(isset($_POST["remove"]) && $_POST["remove"] == true && $_SESSION["role"] == "admin") {
     $sql = "DELETE FROM reviews WHERE id = '" . $_POST["id"] . "';";
     $result = $conn->query($sql);
